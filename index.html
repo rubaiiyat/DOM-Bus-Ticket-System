@@ -416,37 +416,16 @@
                     <th>Price</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <!-- row 1 -->
-                  <tr>
-                    <td>Cy Ganderton</td>
-                    <td>Quality Control Specialist</td>
-                    <td>Blue</td>
-                  </tr>
-                  <!-- row 2 -->
-                  <tr>
-                    <td>Hart Hagerty</td>
-                    <td>Desktop Support Technician</td>
-                    <td>Purple</td>
-                  </tr>
-                  <!-- row 3 -->
-                  <tr>
-                    <td>Brice Swyre</td>
-                    <td>Tax Accountant</td>
-                    <td>Red</td>
-                  </tr>
-                  <tr>
-                    <td>Brice Swyre</td>
-                    <td>Tax Accountant</td>
-                    <td>Red</td>
-                  </tr>
-                </tbody>
+                <tbody id="tableList" class=""></tbody>
               </table>
+              <p id="seatError" class=""></p>
               <hr class="mt-2 mb-2" />
 
               <div class="flex justify-between mt-2">
-                <h1 class="text-xl font-bold">Total Price</h1>
-                <h1 class="text-xl font-bold">BDT: 1100</h1>
+                <h1 class="text-xl font-bold">Subtotal Price</h1>
+                <h1 class="text-xl font-bold">
+                  BDT: <span id="subTotalPrice">00</span>
+                </h1>
               </div>
 
               <div class="mt-2 flex items-center gap-5">
@@ -455,7 +434,10 @@
                   placeholder="Type here"
                   class="input input-bordered input-success w-full max-w-xs"
                 />
-                <button class="btn bg-green-500 text-white hover:bg-green-700">
+                <button
+                  id="couponApplyBtn"
+                  class="btn bg-green-500 text-black hover:bg-green-700 disabled:cursor-not-allowed disabled"
+                >
                   Apply
                 </button>
               </div>
@@ -512,7 +494,7 @@
                 </div>
 
                 <button
-                  class="btn bg-green-500 text-white hover:bg-green-700 w-full"
+                  class="btn bg-green-500 text-black hover:bg-green-700 w-full"
                 >
                   Next
                 </button>
