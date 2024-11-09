@@ -430,6 +430,7 @@
 
               <div class="mt-2 flex items-center gap-5">
                 <input
+                  id="couponInput"
                   type="text"
                   placeholder="Type here"
                   class="input input-bordered input-success w-full max-w-xs"
@@ -441,9 +442,12 @@
                   Apply
                 </button>
               </div>
+              <p id="couponError"></p>
               <div class="flex justify-between mt-2">
                 <h1 class="text-xl font-bold">Grand Total:</h1>
-                <h1 class="text-xl font-bold">BDT: 1000</h1>
+                <h1 class="text-xl font-bold">
+                  BDT: <span id="grandTotal">00</span>
+                </h1>
               </div>
 
               <form>
