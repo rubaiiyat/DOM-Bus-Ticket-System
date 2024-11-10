@@ -95,11 +95,15 @@ seatNumbers.forEach((number) => {
             const afterdiscount = grandTotal - discount;
             grandTotalPrice.innerText = afterdiscount;
             couponError.innerText = "";
+            applyCouponBtn.disabled = true;
+            couponInput.disabled = true;
           } else if (couponInputValue == "Couple 20") {
             const discount = grandTotal * (20 / 100);
             const afterdiscount = grandTotal - discount;
             grandTotalPrice.innerText = afterdiscount;
             couponError.innerText = "";
+            applyCouponBtn.disabled = true;
+            couponInput.disabled = true;
           } else {
             couponError.innerText = "The coupon code entered is not valid";
 
