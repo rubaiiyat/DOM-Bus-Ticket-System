@@ -1,3 +1,8 @@
+document.getElementById("buyTicket").addEventListener("click", function () {
+  const destination = document.getElementById("destination");
+  destination.scrollIntoView({ behavior: "smooth" });
+});
+
 const mainSection = document.getElementById("mainSection");
 
 const seatNumbers = document.querySelectorAll(".numbers");
