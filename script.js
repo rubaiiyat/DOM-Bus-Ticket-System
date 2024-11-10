@@ -17,6 +17,7 @@ successSection.style.display = "none";
 seatNumbers.forEach((number) => {
   number.addEventListener("click", function () {
     seatCount += 1;
+
     if (seatCount <= 4) {
       const getSeatNumber = number.innerText;
 
@@ -39,6 +40,7 @@ seatNumbers.forEach((number) => {
     `;
       tableList.appendChild(createTableRow);
 
+      document.getElementById("totalSeat").innerText = seatCount;
       // add subtotal
       const subTotalPrice = document.getElementById("subTotalPrice");
       const inititalTotalPrice = seatCount * 550;
