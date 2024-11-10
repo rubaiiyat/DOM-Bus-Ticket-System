@@ -7,6 +7,7 @@ const mainSection = document.getElementById("mainSection");
 
 const seatNumbers = document.querySelectorAll(".numbers");
 let seatCount = 0;
+let leftSeat = 40;
 
 const applyCouponBtn = document.getElementById("couponApplyBtn");
 applyCouponBtn.disabled = true;
@@ -17,6 +18,7 @@ successSection.style.display = "none";
 seatNumbers.forEach((number) => {
   number.addEventListener("click", function () {
     seatCount += 1;
+    leftSeat -= 1;
 
     if (seatCount <= 4) {
       const getSeatNumber = number.innerText;
@@ -41,6 +43,8 @@ seatNumbers.forEach((number) => {
       tableList.appendChild(createTableRow);
 
       document.getElementById("totalSeat").innerText = seatCount;
+      document.getElementById("leftSeats").innerText = leftSeat;
+
       // add subtotal
       const subTotalPrice = document.getElementById("subTotalPrice");
       const inititalTotalPrice = seatCount * 550;
