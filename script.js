@@ -15,6 +15,21 @@ applyCouponBtn.disabled = true;
 const successSection = document.getElementById("successSection");
 successSection.style.display = "none";
 
+const nextBtnDisabled = document.getElementById("nextBtn");
+nextBtnDisabled.disabled = true;
+
+const phoneInput = document.getElementById("phone");
+
+function updateNextBtn() {
+  const phoneValue = phoneInput.value;
+
+  if (seatCount > 0 && phoneValue != "") {
+    nextBtnDisabled.disabled = false;
+  }
+}
+
+phoneInput.addEventListener("input", updateNextBtn);
+
 seatNumbers.forEach((number) => {
   number.addEventListener("click", function () {
     seatCount += 1;
@@ -55,6 +70,13 @@ seatNumbers.forEach((number) => {
       const grandTotal = inititalTotalPrice;
       grandTotalPrice.innerText = grandTotal;
 
+      /* phoneInput.addEventListener("input", function () {
+        const phone = phoneInput.value; // Get the current value of the phone input
+        if (seatCount > 0 && phone.trim() !== "") {
+          nextBtnDisabled.disabled = false;
+        }
+      }); */
+
       document.getElementById("nextBtn").addEventListener("click", function () {
         successSection.style.display = "block";
         mainSection.style.display = "none";
@@ -91,6 +113,8 @@ seatNumbers.forEach((number) => {
 
       seatError.classList.add("text-red-500");
     }
+
+    updateNextBtn();
   });
 });
 
