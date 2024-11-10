@@ -1,8 +1,13 @@
+const mainSection = document.getElementById("mainSection");
+
 const seatNumbers = document.querySelectorAll(".numbers");
 let seatCount = 0;
 
 const applyCouponBtn = document.getElementById("couponApplyBtn");
-applyCouponBtn.disabled = false;
+applyCouponBtn.disabled = true;
+
+const successSection = document.getElementById("successSection");
+successSection.style.display = "none";
 
 seatNumbers.forEach((number) => {
   number.addEventListener("click", function () {
@@ -39,31 +44,36 @@ seatNumbers.forEach((number) => {
       const grandTotal = inititalTotalPrice;
       grandTotalPrice.innerText = grandTotal;
 
-      // if (seatCount == 4) {
-      applyCouponBtn.disabled = false;
-
-      applyCouponBtn.addEventListener("click", function () {
-        const couponError = document.getElementById("couponError");
-        const couponInput = document.getElementById("couponInput");
-        couponInputValue = couponInput.value;
-
-        if (couponInputValue == "NEW15") {
-          const discount = grandTotal * (15 / 100);
-          const afterdiscount = grandTotal - discount;
-          grandTotalPrice.innerText = afterdiscount;
-          couponError.innerText = "";
-        } else if (couponInputValue == "Couple 20") {
-          const discount = grandTotal * (20 / 100);
-          const afterdiscount = grandTotal - discount;
-          grandTotalPrice.innerText = afterdiscount;
-          couponError.innerText = "";
-        } else {
-          couponError.innerText = "The coupon code entered is not valid";
-
-          couponError.classList.add("text-red-500");
-        }
+      document.getElementById("nextBtn").addEventListener("click", function () {
+        successSection.style.display = "block";
+        mainSection.style.display = "none";
       });
-      // }
+
+      if (seatCount == 4) {
+        applyCouponBtn.disabled = false;
+
+        applyCouponBtn.addEventListener("click", function () {
+          const couponError = document.getElementById("couponError");
+          const couponInput = document.getElementById("couponInput");
+          couponInputValue = couponInput.value;
+
+          if (couponInputValue == "NEW15") {
+            const discount = grandTotal * (15 / 100);
+            const afterdiscount = grandTotal - discount;
+            grandTotalPrice.innerText = afterdiscount;
+            couponError.innerText = "";
+          } else if (couponInputValue == "Couple 20") {
+            const discount = grandTotal * (20 / 100);
+            const afterdiscount = grandTotal - discount;
+            grandTotalPrice.innerText = afterdiscount;
+            couponError.innerText = "";
+          } else {
+            couponError.innerText = "The coupon code entered is not valid";
+
+            couponError.classList.add("text-red-500");
+          }
+        });
+      }
     } else {
       const seatError = document.getElementById("seatError");
       seatError.innerText = "Sorry, you’ve reached the 4-seat limit.";
@@ -71,4 +81,9 @@ seatNumbers.forEach((number) => {
       seatError.classList.add("text-red-500");
     }
   });
+});
+
+document.getElementById("continueBtn").addEventListener("click", function () {
+  mainSection.style.display = "block";
+  successSection.style.display = "none";
 });
